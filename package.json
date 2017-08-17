@@ -1,0 +1,28 @@
+{
+  "name": "ara",
+  "version": "1.0.0",
+  "description": "mongoose practice",
+  "main": "index.js",
+  "dependencies": {
+    "mongoose": "^4.11.7",
+    "underscore": "1.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "no test command"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MurphyPicard/mongoosePractice.git"
+  },
+  "keywords": [
+    "no",
+    "keywords"
+  ],
+  "author": "ara yaghsizian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MurphyPicard/mongoosePractice/issues"
+  },
+  "homepage": "https://github.com/MurphyPicard/mongoosePractice#readme"
+}
