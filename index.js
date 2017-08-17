@@ -23,7 +23,8 @@ mongodb.MongoClient.connect(uri, (error, db)=>{
       console.log(error);
       process.exit(1);
     }
-    var query = {year: 1975};
+
+    // cursor is the default and toArray makes it readable
     db.collection('movies').find().toArray((error, docs)=>{
       if(error){
         console.log(error);
