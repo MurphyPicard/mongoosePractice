@@ -15,7 +15,12 @@ mongodb.MongoClient.connect(uri, (error, db)=>{
     title: 'Jaws',
     year: 1975,
     director: 'Steven Speilberg',
-    rating: 'PG'
+    rating: 'PG',
+    ratings: {
+      critics: 83,
+      audience: 97
+    },
+    screenplay: ['Pete', 'Carl']
   };//doc
 
   db.collection('movies').insert(doc, (error, result)=>{
@@ -24,17 +29,24 @@ mongodb.MongoClient.connect(uri, (error, db)=>{
       process.exit(1);
     }
 
-    // cursor is the default and toArray makes it readable
-    db.collection('movies').find().toArray((error, docs)=>{
-      if(error){
-        console.log(error);
-        process.exit(1);
-      }//if
-      console.log('Ara found docs: ');
-      docs.forEach((doc)=>{
-        console.log(JSON.stringify(doc));
-      })//forEach
-      process.exit(0);
+    var query = {year: 1975, "title":"Jaws"}// comma works as and
+
+    db.collection('movies')
+      // .find()
+      // .find(query)
+      // .find(screenplay:'Pete')
+      .find({'ratings.critics': {'$gte': 80}})
+      // cursor is the default and toArray makes it readable
+      .toArray((error, docs)=>{
+        if(error){
+          console.log(error);
+          process.exit(1);
+        }//if
+        console.log('Ara found docs: ');
+        docs.forEach((doc)=>{
+          console.log(JSON.stringify(doc));
+        })//forEach
+        process.exit(0);
     });//toArray
   });//insert
 });//connect
